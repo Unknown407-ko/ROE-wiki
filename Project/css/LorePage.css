@@ -1,0 +1,419 @@
+/* ===== CSS Reset & Base ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      /* Dark Theme Colors */
+      --color-primary: #4a86ff;
+      --color-secondary: #1e1e1e;
+      --color-neutral: #3a3a3a;
+      --color-header-bg: #0a0a0a;
+      --color-header-text: #ffffff;
+      --color-sidebar-bg: #121212;
+      --color-sidebar-border: #2a2a2a;
+      --color-content-bg: #121212;
+      --color-body-bg: #000000;
+      --color-link: #4a86ff;
+      --color-link-visited: #bb86fc;
+      --color-text: #e0e0e0;
+      --color-text-muted: #a0a0a0;
+      --color-border: #333333;
+      --color-accent: #2c2c2c;
+      --color-footer-bg: #0a0a0a;
+      --color-footer-text: #888888;
+      --color-infobox-bg: #1a1a1a;
+      --color-infobox-border: #333333;
+      --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Helvetica Neue', sans-serif;
+      --font-family-serif: 'Linux Libertine', 'Times New Roman', 'Liberation Serif', serif;
+      --border-radius: 4px;
+      --shadow: 0 2px 8px rgba(0,0,0,0.5);
+      --sidebar-width: 220px;
+      --header-height: 56px;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--color-body-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: var(--color-link);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== HEADER ===== */
+    #site-header {
+      background-color: var(--color-header-bg);
+      color: var(--color-header-text);
+      height: var(--header-height);
+      display: flex;
+      align-items: center;
+      padding: 0 1.25rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.8);
+      gap: 1rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    #site-header .site-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    #site-header .site-logo .logo-icon {
+      width: 34px;
+      height: 34px;
+      background: linear-gradient(135deg, #4a86ff, #2a56aa);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1rem;
+      color: #fff;
+      letter-spacing: -1px;
+    }
+
+    #site-header .site-logo .site-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+    }
+
+    #site-header .header-search {
+      flex: 1;
+      max-width: 380px;
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    #site-header .header-search input {
+      flex: 1;
+      padding: 0.38rem 0.75rem;
+      border: 1px solid #333;
+      border-radius: 20px;
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 0.875rem;
+      outline: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    #site-header .header-search input::placeholder {
+      color: #666;
+    }
+    #site-header .header-search input:focus {
+      background: #222;
+      border-color: var(--color-primary);
+    }
+
+    #site-header .header-search button {
+      background: var(--color-primary);
+      border: none;
+      border-radius: 20px;
+      color: #fff;
+      padding: 0.38rem 0.9rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    #site-header .header-search button:hover {
+      background: #3574ee;
+    }
+
+    #site-header .header-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.82rem;
+      color: #aaa;
+      flex-shrink: 0;
+    }
+    #site-header .header-meta a {
+      color: #aaa;
+    }
+    #site-header .header-meta a:hover {
+      color: #fff;
+      text-decoration: none;
+    }
+    #site-header .header-meta .article-count {
+      background: #222;
+      border-radius: 12px;
+      padding: 0.18rem 0.65rem;
+      font-size: 0.78rem;
+      color: #888;
+    }
+
+
+    /* ===== PAGE TABS ===== */
+    #page-tabs {
+      background-color: var(--color-header-bg);
+      border-bottom: 2px solid var(--color-primary);
+      padding: 0 1.25rem 0 calc(var(--sidebar-width) + 1.5rem);
+      display: flex;
+      align-items: flex-end;
+      gap: 0.1rem;
+    }
+
+    .page-tab {
+      display: inline-block;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.82rem;
+      color: #888;
+      border-radius: 4px 4px 0 0;
+      cursor: pointer;
+    }
+    .page-tab.active {
+      background: var(--color-content-bg); /* 배경색을 본문과 일치시킴 */
+      color: #fff;                         /* 글자색 흰색 */
+      font-weight: 600;
+      border: 1px solid var(--color-primary); /* 강조색 테두리 */
+      border-bottom: 2px solid var(--color-content-bg); /* 아래쪽 선을 지워 본문과 연결된 느낌 */
+      margin-bottom: -2px;                 /* 테두리 겹침 보정 */
+    }
+
+    /* ===== LAYOUT ===== */
+    #layout {
+      display: flex;
+      flex: 1;
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* ===== SIDEBAR ===== */
+    #sidebar {
+      width: var(--sidebar-width);
+      flex-shrink: 0;
+      background: var(--color-sidebar-bg);
+      border-right: 1px solid var(--color-sidebar-border);
+      padding: 1rem 0;
+      min-height: calc(100vh - var(--header-height) - 40px);
+    }
+
+    .sidebar-section-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #666;
+      padding: 0.6rem 1rem 0.3rem;
+      border-top: 1px solid #222;
+    }
+    .sidebar-section:first-child .sidebar-section-title {
+      border-top: none;
+    }
+
+    .sidebar-section ul {
+      list-style: none;
+    }
+
+    .sidebar-section ul li a {
+      display: block;
+      padding: 0.38rem 1rem 0.38rem 1.2rem;
+      font-size: 0.875rem;
+      color: #ccc;
+      transition: background 0.15s, color 0.15s;
+      border-left: 3px solid transparent;
+    }
+    .sidebar-section ul li a:hover {
+      background: #1a1a1a;
+      color: var(--color-primary);
+      border-left-color: var(--color-primary);
+      text-decoration: none;
+    }
+    .sidebar-section ul li a.active {
+      background: #1a1a1a;
+      color: var(--color-primary);
+      border-left-color: var(--color-primary);
+      font-weight: 600;
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    #main-content {
+      flex: 1;
+      padding: 1.5rem 2rem;
+      background: var(--color-body-bg);
+      min-width: 0;
+    }
+
+    .page-title-bar {
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #333;
+    }
+
+    .page-title-bar h1 {
+      font-family: var(--font-family-serif);
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: #fff;
+    }
+
+    #page-tabs {
+      background-color: var(--color-header-bg);
+      border-bottom: 2px solid var(--color-primary);
+      padding: 0 1.25rem 0 calc(var(--sidebar-width) + 1.5rem);
+      display: flex;
+      align-items: flex-end;
+      gap: 0.1rem;
+    }
+
+    /* 기본 탭 스타일 */
+    .page-tab {
+      display: inline-block;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.82rem;
+      color: #888;
+      border-radius: 4px 4px 0 0;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      
+    }
+
+    .page-tab:hover {
+      color: #fff;
+      background: #1a1a1a;
+    }
+
+    /* 활성화된(선택된) 탭 스타일 */
+    .page-tab.active {
+      background: var(--color-content-bg);
+      color: #fff;
+      font-weight: 600;
+      border: 1px solid var(--color-primary);
+      border-bottom: 2px solid var(--color-content-bg);
+      margin-bottom: -2px;
+    }
+
+    /* Section Headings */
+    h2 {
+      font-size: 1.5rem;
+      border-bottom: 1px solid #333;
+      margin: 2rem 0 1rem;
+      padding-bottom: 0.3rem;
+      color: #fff;
+    }
+    h3 {
+      font-size: 1.2rem;
+      margin: 1.5rem 0 0.8rem;
+      color: #4a86ff;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: #ccc;
+    }
+
+    /* Infobox Style */
+    .infobox table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed; /* 열 너비를 고정하기 위해 추가 */
+    }
+
+    .infobox th, .infobox td {
+      padding: 0.4rem;
+      text-align: left;
+      border-bottom: 1px solid #222;
+      vertical-align: top; /* 글자가 위쪽부터 정렬되도록 추가 */
+    }
+
+    .infobox-title {
+      text-align: center;      /* 가운데 정렬 */
+      color: #ffffff;          /* 글자색 흰색 */
+      background: #2a2a2a;     /* 배경색 (필요에 따라 조절) */
+      padding: 0.6rem 0.5rem;  /* 위아래 여백을 주어 h3 느낌 부여 */
+      font-size: 1.17rem;      /* h3 표준 크기 (약 1.17em ~ 1.2em) */
+      font-weight: bold;       /* 굵게 */
+      margin-bottom: 0.5rem;
+      border-radius: 2px;      /* 약간의 곡률 (선택 사항) */
+    }
+
+    /* 리스트 스타일 및 여백 조절 */
+    .infobox {
+      float: right;            /* 오른쪽 배치 */
+      width: 300px;            /* 너비 고정 */
+      background: #1a1a1a;
+      border: 1px solid #333;
+      margin: 0 0 1rem 1.5rem; /* 왼쪽 여백을 주어 본문과 겹치지 않게 함 */
+      padding: 0.5rem;
+      font-size: 0.85rem;
+      clear: right;            /* 다른 float 요소와 겹침 방지 */
+    }
+
+    /* 이미지 크기 제어 */
+    .infobox img {
+      width: 100%;             /* 인포박스 너비(300px)에 맞춤 */
+      height: auto;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 표 크기 제어 */
+    .infobox table {
+      width: 100%;             /* 인포박스 내부에서 꽉 차게 */
+      border-collapse: collapse;
+      table-layout: fixed;     /* 열 너비 고정 */
+    }
+
+    .infobox th, .infobox td {
+      padding: 0.4rem;
+      text-align: left;
+      border-bottom: 1px solid #222;
+      vertical-align: top;
+      word-break: break-all;   /* 좁은 공간에서 글자 줄바꿈 강제 */
+    }
+
+    /* 교전세력 열 (정확히 반씩 나눔) */
+    .belligerent-cell {
+      width: 50% !important;   /* 강제로 50% 지정 */
+      border-right: 1px solid #222;
+    }
+
+    /* Blockquote */
+    blockquote {
+      border-left: 4px solid #333;
+      padding-left: 1rem;
+      margin: 1rem 0;
+      color: #aaa;
+      font-style: italic;
+    }
+
+    /* Footer */
+    #site-footer {
+      background: var(--color-footer-bg);
+      color: var(--color-footer-text);
+      padding: 1.5rem 2rem;
+      border-top: 1px solid #333;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 860px) {
+      #sidebar { display: none; }
+      #page-tabs { padding-left: 1.25rem; }
+      .infobox { float: none; width: 100%; margin: 1rem 0; }
+    }
