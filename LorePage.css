@@ -356,7 +356,7 @@
     /* 리스트 스타일 및 여백 조절 */
     .infobox {
       float: right;            /* 오른쪽 배치 */
-      width: 300px;            /* 너비 고정 */
+      width: 400px;            /* 너비 고정 */
       background: #1a1a1a;
       border: 1px solid #333;
       margin: 0 0 1rem 1.5rem; /* 왼쪽 여백을 주어 본문과 겹치지 않게 함 */
@@ -388,10 +388,37 @@
       word-break: break-all;   /* 좁은 공간에서 글자 줄바꿈 강제 */
     }
 
-    /* 교전세력 열 (정확히 반씩 나눔) */
     .belligerent-cell {
-      width: 50% !important;   /* 강제로 50% 지정 */
-      border-right: 1px solid #222;
+      width: 50% !important;
+      vertical-align: top;
+      padding: 0.5rem !important;
+      border-right: 1px solid #333; /* 중앙 구분선 색상 조절 */
+      word-break: break-all;        /* 내용이 넘치지 않게 방지 */
+    }
+    
+    /* 오른쪽 셀 (구분선 제거 및 여백 확보) */
+    .belligerent-cell:last-child {
+        border-right: none;
+        padding-left: 0.8rem !important;
+    }
+    
+    /* 셀 내부 리스트 스타일 최적화 */
+    .belligerent-cell ul {
+        list-style-position: outside; /* 불렛을 텍스트 바깥에 배치 (표준 위키 스타일) */
+        padding-left: 1.2rem !important; /* 불렛이 셀 밖이나 선으로 나가지 않게 여백 확보 */
+        margin: 0;
+    }
+    
+    .belligerent-cell li {
+        margin-bottom: 0.3rem; /* 항목 간의 간격 */
+        line-height: 1.4;       /* 줄 간격 조절로 가독성 향상 */
+    }
+    
+    /* 하위 리스트 (사단 등) 스타일 */
+    .belligerent-cell ul ul {
+        padding-left: 1rem !important; /* 안쪽 리스트 들여쓰기 */
+        margin-top: 0.2rem;
+        font-size: 0.9em;       /* 하위 항목은 살짝 작게 */
     }
 
     /* Blockquote */
